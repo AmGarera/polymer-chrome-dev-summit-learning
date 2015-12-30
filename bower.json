@@ -9,7 +9,9 @@
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0",
     "paper-menu": "PolymerElements/paper-menu#4fecb43601",
-    "app-layout": "PolymerLabs/app-layout#~0.0.6"
+    "app-layout": "PolymerLabs/app-layout#~0.0.6",
+    "paper-fab": "PolymerElements/paper-fab#~1.1.2",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.1.2"
   },
   "devDependencies": {
     "web-component-tester": "*"

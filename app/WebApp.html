@@ -1,0 +1,285 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>App Layout</title>
+<!--Components-->
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="/bower_components/app-layout/app-layout.html">
+    <link rel="import" href="../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-styles/shadow.html">
+    <link rel="import" href="../bower_components/app-layout/app-layout.html">
+    <link rel="import" href="../bower_components/app-layout/tools/device-viewer/device-layout-viewer.html">
+    <link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<!--CSS-->
+    <style is="custom-style">
+        body {
+            margin: 0;
+            font-family: 'Roboto', 'Noto', sans-serif;
+            background-color: #fafafa;
+        }
+        a {
+            text-decoration: none;
+            font-size: inherit;
+            color: inherit;
+        }
+        app-header {
+            background-color: #008B8B;
+            color: #fff;
+        }
+        .top-toolbar {
+            height: 320px;
+        }
+        .heading {
+            font-family: Roboto Mono;
+            margin-left: 40px;
+        }
+        .heading > .title {
+            font-size: 56px;
+        }
+        .heading > .sub-title {
+            margin-top: 24px;
+            line-height: 1.6;
+        }
+        .bottom-toolbar {
+            height: 136px;
+        }
+        .bottom-tools {
+            margin-left: auto;
+        }
+        .bottom-toolbar paper-button {
+            width: 220px;
+            background-color: #86D3D7;
+            margin: 4px 8px;
+            text-transform: none;
+        }
+        .bottom-toolbar paper-button iron-icon {
+            margin-right: 8px;
+        }
+        device-layout-viewer {
+            height: 600px;
+        }
+        section {
+            text-align: center;
+            padding-top: 80px;
+        }
+        section > h1 {
+            margin: 0 0 32px 0;
+            font-size: 48px;
+            font-weight: 300;
+        }
+        section > p {
+            max-width: 640px;
+            margin: 32px auto;
+            padding: 0 8px;
+            font-size: 18px;
+            letter-spacing: 0.05em;
+            line-height: 1.5;
+        }
+        .grid {
+            width: 832px;
+            @apply(--layout-horizontal);
+            @apply(--layout-wrap);
+            margin: 0 auto;
+        }
+        .grid-item {
+            position: relative;
+            width: 400px;
+            max-height: 420px;
+            @apply(--layout-flex-none);
+            margin: 8px;
+            padding-bottom: 24px;
+            background-color: #fff;
+            @apply(--shadow-elevation-2dp);
+        }
+        .coming-soon::after {
+            content: '';
+            @apply(--layout-fit);
+            background-color: rgba(256,256,256,0.7);
+        }
+        .coming-soon::before {
+            content: 'Coming Soon!';
+            width: 200px;
+            position: absolute;
+            top: 152px;
+            left: calc(50% - 100px);
+            margin: 0 auto;
+            padding: 16px 8px;
+            z-index: 10;
+            border-radius: 3px;
+            background-color: rgba(0,0,0,0.65);
+            color: #fff;
+            font-size: 36px;
+            font-style: italic;
+        }
+        .grid-item > .image {
+            height: 300px;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+        .publishing-image {
+            background-image: url(../bower_components/app-layout/tools/app/images/publishing.png);
+        }
+        .pesto-image {
+            background-image: url(../bower_components/app-layout/tools/app/images/pesto.png);
+        }
+        .grid-item > .music-image {
+            background-image: url(../bower_components/app-layout/tools/app/images/music.png);
+            background-size: contain;
+            background-color: #ccc;
+        }
+        .summit-image {
+            background-image: url(../bower_components/app-layout/tools/app/images/polymer-summit.png);
+        }
+        .pica-image {
+            background-image: url(../bower_components/app-layout/tools/app/images/pica.png);
+        }
+        .grid-item > .caption {
+            text-align: center;
+            color: #5c5c5c;
+        }
+        .caption > h3 {
+            margin: 24px 0;
+        }
+        .caption > p {
+            margin: 16px 16px 24px;
+            line-height: 1.5;
+        }
+        .grid-item paper-button {
+            background-color: #4FB6F7;
+            color: #fff;
+        }
+        .misc-link {
+            display: block;
+            padding: 12px 0;
+            font-size: 24px;
+            line-height: 1.25;
+            color: #147BCC;
+        }
+        footer {
+            padding-top: 200px;
+        }
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 36px 16px;
+            border-top: 1px solid #acacac;
+            font-size: 18px;
+            line-height: 3;
+            color: #147BCC;
+        }
+        .footer-inner .title {
+            font-size: 20px;
+            color: #333;
+        }
+        .dot-separator {
+            padding: 0 8px;
+        }
+        .dot-separator::after {
+            content: '\2022';
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+            background: url(../bower_components/app-layout/tools/app/images/polymer.svg) 50% no-repeat;
+            background-size: contain;
+        }
+        @media (max-width: 1024px) {
+            .heading {
+                margin-left: 16px;
+            }
+            device-layout-viewer {
+                height: 340px;
+            }
+        }
+        @media (max-width: 848px) {
+            .grid {
+                width: 416px;
+            }
+        }
+        @media (max-width: 600px) {
+            .responsive.horizontal.layout {
+                @apply(--layout-vertical);
+            }
+            .wide-only {
+                display: none;
+            }
+            .heading {
+                margin-left: 0;
+            }
+            device-layout-viewer {
+                height: 240px;
+            }
+            .bottom-toolbar paper-button {
+                width: 200px;
+                margin: 4px 0;
+            }
+        }
+        @media (max-width: 432px) {
+            .heading > .title {
+                font-size: 40px;
+            }
+            .grid {
+                width: auto;
+                @apply(--layout-vertical);
+            }
+            .grid-item {
+                width: auto;
+            }
+        }
+    </style>
+
+</head>
+<body unresolved>
+<!--Page Header-->
+<app-header>
+
+    <app-toolbar class="top-toolbar">
+        <div class="heading">
+            <div class="title">Chrome Dev Summit 2015</div>
+            <div class="sub-title">Learn about the latest and greatest that happen this year at Chrome Dev Summit 2015</div>
+        </div>
+    </app-toolbar>
+
+    <app-toolbar class="bottom-toolbar">
+        <div class="bottom-tools responsive horizontal layout">
+            <a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcICcHeQY02XLvoGL34rZFWZn" target="_blank" tabindex="-1">
+                <paper-button raised><iron-icon icon="view-stream"></iron-icon>Watch on Youtube</paper-button>
+            </a>
+            <a href="https://developers.google.com" target="_blank" tabindex="-1">
+                <paper-button raised><iron-icon icon="view-stream"></iron-icon>Google Devs</paper-button>
+            </a>
+            <a href="https://polymer.github.io/polymer/" target="_blank" tabindex="-1">
+                <paper-button raised><iron-icon icon="subject"></iron-icon>Polymer Docs</paper-button>
+            </a>
+        </div>
+    </app-toolbar>
+
+</app-header>
+<app-box>
+    <paper-header-panel class="flex">
+        <paper-toolbar>
+            <div>Hello World!</div>
+        </paper-toolbar>
+    </paper-header-panel>
+</app-box>
+</body>
+</html>
