@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <title>App Layout</title>
 <!--Components-->
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="/bower_components/app-layout/app-layout.html">
     <link rel="import" href="../bower_components/font-roboto/roboto.html">
     <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
@@ -27,6 +27,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../bower_components/app-layout/app-layout.html">
     <link rel="import" href="../bower_components/app-layout/tools/device-viewer/device-layout-viewer.html">
     <link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+    <link rel="import" href="../bower_components/paper-tabs/paper-tabs-icons.html">
+    <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <!--CSS-->
     <style is="custom-style">
         body {
@@ -237,21 +240,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .heading > .title {
                 font-size: 40px;
             }
+
             .grid {
                 width: auto;
                 @apply(--layout-vertical);
             }
+
             .grid-item {
                 width: auto;
             }
         }
+        app-scrim {
+            background-color: #fff9c4;
+        }
+        paper-tabs {
+            background: #86D3D7;
+        }
+
     </style>
 
 </head>
 <body unresolved>
+<app-scrim visible></app-scrim>
 <!--Page Header-->
 <app-header>
-
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <paper-icon-button icon="search"></paper-icon-button>
     <app-toolbar class="top-toolbar">
         <div class="heading">
             <div class="title">Chrome Dev Summit 2015</div>
@@ -274,12 +288,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </app-toolbar>
 
 </app-header>
-<app-box>
-    <paper-header-panel class="flex">
-        <paper-toolbar>
-            <div>Hello World!</div>
-        </paper-toolbar>
-    </paper-header-panel>
-</app-box>
+<core-toolbar>
+<!--Tabs For Navigation-->
+<paper-tabs selected="{{selected}}">
+    <paper-tab>Tab 1</paper-tab>
+    <paper-tab>Tab 2</paper-tab>
+    <paper-tab>Tab 3</paper-tab>
+</paper-tabs>
+</core-toolbar>
 </body>
 </html>
