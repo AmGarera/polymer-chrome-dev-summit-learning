@@ -30,6 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
     <link rel="import" href="../bower_components/paper-tabs/paper-tabs-icons.html">
     <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import" href="../bower_components/gold-zip-input/gold-zip-input.html">
 <!--CSS-->
     <style is="custom-style">
         body {
@@ -256,7 +257,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         paper-tabs {
             background: #86D3D7;
         }
-
+        paper-header-panel {
+            --paper-header-panel-shadow: {
+                height: 6px;
+                bottom: -6px;
+                box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
+            };
+        }
+        paper-input {
+background-color: #FFFFFF;
+        }
     </style>
 
 </head>
@@ -296,5 +306,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-tab>Tab 3</paper-tab>
 </paper-tabs>
 </core-toolbar>
+<!--Weather By ZIP-->
+<paper-header-panel mode="waterfall">
+    <div class="paper-header"><h1>Wanna See the Weather? </h1>Fill out the Field Below!
+        <gold-zip-input required="" auto-validate="" error-message="Please enter a valid US zip code" label="Enter Zip Code" tabindex="0" aria-disabled="false">
+
+            <paper-input-container id="container" attr-for-value="bind-value" class="style-scope gold-zip-input x-scope paper-input-container-0">
+
+
+
+                <div class="floated-label-placeholder style-scope paper-input-container">&nbsp;</div>
+                <template is="dom-if" class="style-scope paper-input-container"></template>
+
+                <div class="input-content label-is-floating style-scope paper-input-container">
+
+
+                    <div class="label-and-input-container style-scope paper-input-container" id="labelAndInputContainer" style="position: static;">
+                        <label class="style-scope gold-zip-input" id="paper-input-label-345">Enter Your Zip Here</label><zip-validator class="style-scope gold-zip-input"></zip-validator><input is="iron-input" id="input" validator="zip-validator" type="tel" allowed-pattern="[0-9\-]" prevent-invalid-input="" maxlength="10" autocomplete="postal-code" class="style-scope gold-zip-input" required="" placeholder="" aria-describedby="error" aria-labelledby="paper-input-label-345"><template is="dom-if" class="style-scope gold-zip-input"></template>
+                    </div>
+
+
+                </div>
+
+                <div class="underline style-scope paper-input-container">
+                    <div class="unfocused-line style-scope paper-input-container"></div>
+                    <div class="focused-line style-scope paper-input-container"></div>
+                </div>
+
+                <div class="add-on-content style-scope paper-input-container">
+                    <paper-input-error id="error" class="style-scope gold-zip-input x-scope paper-input-error-0" add-on="">
+
+
+                        Please enter a valid US zip code
+                    </paper-input-error>
+                </div>
+            </paper-input-container>
+        </gold-zip-input>
+        </div>
+</paper-header-panel>
 </body>
 </html>
